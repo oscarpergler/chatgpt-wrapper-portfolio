@@ -11,6 +11,7 @@
         <li><a href="https://github.com/oscarpergler" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </h4>
+    <p class="note">I do not take responsibility of anything the LLM says or is prompted to say. This app uses the OpenAI API and aims to answer questions based on information that I have provided it, though its answers may be unpredictable and completely unrelated to what data it has been given. Have "lagom" fun.</p>
   </div>
 </template>
 
@@ -39,6 +40,13 @@ h4{
 .greetings h1,
 .greetings h3 {
   text-align: left;
+}
+
+.note{
+  margin-top: 100px;
+  font-style: italic;
+  color: rgb(56, 56, 56);
+  font-size: 0.8rem;
 }
 
 @media (min-width: 1024px) {

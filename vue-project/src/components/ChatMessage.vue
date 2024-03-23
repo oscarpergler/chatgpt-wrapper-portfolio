@@ -5,7 +5,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-if="messageObj != null" class="message"><span class="sender">{{ messageObj.sender }}: </span>{{ messageObj.message }}</div>
+    <div v-if="messageObj != null" class="message">
+        <div :class="messageObj.sender === 'Oscar (AI)' ? 'ai' : 'user'"> {{ messageObj.sender }}: </div> 
+        {{ messageObj.message }} 
+    </div>
 </template>
 
 <style scoped>
@@ -15,7 +18,13 @@ const props = defineProps({
         padding-right: 20px;
     }
 
-    .sender{
+    .ai{
+        color: hsla(160, 100%, 37%, 1);
+        font-weight: bold;
+    }
+
+    .user{
+        color: rgb(43, 141, 233);
         font-weight: bold;
     }
 
