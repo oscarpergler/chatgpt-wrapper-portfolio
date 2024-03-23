@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
     <div v-if="messageObj != null" class="message">
-        <div :class="messageObj.sender === 'Oscar (AI)' ? 'ai' : 'user'"> {{ messageObj.sender }}: </div> 
+        <div :class="messageObj.sender === 'Dave' ? 'ai' : 'user'"> {{ messageObj.sender }}: </div> 
         {{ messageObj.message }} 
     </div>
 </template>
