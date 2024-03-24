@@ -2,24 +2,14 @@
 import { ref } from 'vue'
 import ChatMessage from '../components/ChatMessage.vue';
 
+/*
+ TODO: send the entire messages list as a parameter after appending the user query
+       make sure the format is the same as the format handled by the ai-json.
+*/
+
+// Why are we using a ref instead of a normal array?
 const messages = ref([
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'Dave', message: 'HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!' },
-  { sender: 'You', message: 'whatafak' }
+  { role: 'assistant', message: "Hello, I'm Dave! I'm here to answer any questions you may have about Oscar." },
 ]);
 
 function answerMessage(message: String){
@@ -32,12 +22,13 @@ function sendMessage(e: Event) {
   const value = target.value.trim();
   if (value) {
     messages.value.push({
-      sender: 'You',
+      role: 'user',
       message: value
     })
     target.value = '';
     answerMessage(value);
   }
+  console.log(messages); // gives Object(__v_isRef, __v_isShallow, _rawValue, _value, dep), we want to be able to extract the array. Again, why are we using ref?
 }
 
 </script>
