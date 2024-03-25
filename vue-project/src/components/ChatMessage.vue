@@ -14,7 +14,7 @@ function firstLetterUpperCase(role:string) {
 <template>
     <div v-if="messageObj != null" class="message">
         <div :class="messageObj.role === 'assistant' ? 'assistant' : 'user'"> {{ firstLetterUpperCase(messageObj.role) }}: </div> 
-        {{ messageObj.message }} 
+        {{ messageObj.content }} 
     </div>
 </template>
 
