@@ -14,15 +14,21 @@ function firstLetterUpperCase(role:string) {
 <template>
     <div v-if="messageObj != null" class="message">
         <div :class="messageObj.role === 'assistant' ? 'assistant' : 'user'"> {{ firstLetterUpperCase(messageObj.role) }}: </div> 
-        {{ messageObj.content }} 
+        <span v-html="messageObj.content"></span>
     </div>
 </template>
 
 <style scoped>
 
-    .message{
-        word-wrap: break-word;
+    .message {
+        margin: 20px;
         padding-right: 20px;
+        animation: typing 1s steps(40, end);
+    }
+
+    @keyframes typing {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .assistant{

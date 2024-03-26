@@ -11,7 +11,7 @@
         <li><a href="https://github.com/oscarpergler" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </h4>
-    <p class="note">I do not take responsibility of anything the "Assistant" says or is prompted to say. This app uses the OpenAI API and aims to answer questions based on information that I have provided it, though its answers may be unpredictable and completely unrelated to what data it has been given.</p>
+    <p class="note">I do not take responsibility of anything the "Assistant" says or is prompted to say. This app uses the OpenAI API and aims to answer questions based on information that I have provided it. It may give answers that are completely wrong.</p>
   </div>
 </template>
 
