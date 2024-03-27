@@ -9,7 +9,7 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors(
     {
-        origin: ["https://chatgpt-wrapper-portfolio.vercel.app/"],
+        origin: ["https://chatgpt-wrapper-portfolio.vercel.app"],
         credentials: true
     }
 ));
