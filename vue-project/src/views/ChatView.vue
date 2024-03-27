@@ -13,8 +13,10 @@ let loadingAnswer: Ref = ref(false);
 
 const answerMessage = async (message: String) => {
   if (!message) throw new Error("No message paramater provided for answerMessage()");
+  loadingAnswer.value = true;
   await axios.post(`${API_URL}/query`, messages) 
     .then(response => { 
+      loadingAnswer.value = false;
       const {_, content} = response.data;
       currentMessage.value.push({
         role: 'assistant',
@@ -62,6 +64,10 @@ const sendMessage = (e: Event) => {
           v-for="messageObj in currentMessage"
           :messageObj="messageObj"
         ></ChatMessage>
+        <ChatMessage
+          v-if="loadingAnswer"
+          :messageObj="{ 'role': 'assistant', 'content': 'Thinking...'}"
+        ></ChatMessage>
       </div>
     </div>
     <div class="input">
@@ -74,10 +80,8 @@ const sendMessage = (e: Event) => {
     </div>
   </div>
   <div class="examples">
-    <p>Try one of these example questions:</p>
     <div class="button" @click="exampleQuestion('Tell me about his academic background.')">Academic background</div>
     <div class="button" @click="exampleQuestion('Does he prefer frontend or backend development?')">Backend or frontend</div>
-    <div class="button" @click="exampleQuestion('Summarize Oscar in plain text')">About me</div>
     <div class="button" @click="exampleQuestion('Give me a list of his achievements')">Achievements</div>
     <div class="button" @click="exampleQuestion('Tell me about his thesis project')">Thesis project</div>
   </div>
@@ -86,7 +90,6 @@ const sendMessage = (e: Event) => {
 <style scoped>
 
   .chat {
-    position: relative;
     display: flex;
     flex-direction: column;
     height: 80%;
@@ -94,42 +97,39 @@ const sendMessage = (e: Event) => {
 
   .output{
     display: flex;
-    flex-direction: column-reverse;
-    width: 50vw;
+    width: 100%;
     height: 100%;
     overflow-y: scroll; 
     overflow-x: wrap;
-    border: 1px solid #333;
     border-radius: 5px;
   }
 
   .input{
-    margin-top: 10px;
-    position: sticky;
-    bottom: 0;
     width: 100%;
   }
 
   .input-field{
     font-size: 1.1rem;
     padding: 10px;
-    border-radius: 10px;
     color: rgb(156, 156, 156);
     background-color: #333;
+    border-radius: 10px;
     border: none;
     width: 100%;
   }
 
   .examples{
-    margin: 20px auto;
+    margin-top: 20px;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-row: auto auto;
+    grid-column-gap: 10%;
+    grid-row-gap: 20px;
   }
 
   .examples .button{
+    text-align: center;
     color: hsla(160, 100%, 37%, 1);
     border: hsla(160, 100%, 37%, 1) solid 1px;
     padding: 5px;
@@ -141,6 +141,69 @@ const sendMessage = (e: Event) => {
     background-color: hsla(160, 100%, 37%, 1);
     cursor: pointer;
     transition: 0.3s;
+  }
+
+  .answerLoading{
+    padding-left: 10px;
+    margin: 10px;
+    font-weight: bold;
+    width: 100%;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.3s;
+  }
+
+  @media screen and (min-width: 1024px){
+
+    .output{
+      display: flex;
+      flex-direction: column-reverse;
+      width: 50vw;
+      height: 100%;
+      overflow-y: scroll; 
+      overflow-x: wrap;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+
+    .input{
+      margin-top: 10px;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .input-field{
+      font-size: 1.1rem;
+      padding: 10px;
+      border-radius: 10px;
+      color: rgb(156, 156, 156);
+      background-color: #333;
+      border: none;
+      width: 100%;
+    }
+
+    .examples .button{
+      color: hsla(160, 100%, 37%, 1);
+      border: hsla(160, 100%, 37%, 1) solid 1px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .button:hover{
+      color: black;
+      background-color: hsla(160, 100%, 37%, 1);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .answerLoading{
+      padding-left: 10px;
+      margin: 10px;
+      font-weight: bold;
+      width: 100%;
+      color: hsla(160, 100%, 37%, 1);
+      transition: 0.3s;
+    }
   }
 
 </style>

@@ -17,17 +17,31 @@ import IntroView from './views/IntroView.vue';
 <style scoped>
 
   .app-container{
-    width: 100vw; 
-    height: 100vh; 
-    padding: 10%;
-    align-items: center; 
-    display: flex; 
-    gap: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .view{
-    flex: 1; 
-    height: 100%; 
+    padding: 5%;
+    height: 100vh;
+    width: 100vw;
   }
+
+  @media screen and (min-width: 1024px){
+    .app-container{ 
+      height: 100vh;
+      padding: 10%;
+      flex-direction: row;
+    }
+
+    .view{
+      flex: 1; 
+      height: 100%; 
+    }
+  }
+  
 
 </style>
