@@ -8,7 +8,7 @@ let messages = [
   { role: 'assistant', content: "Hello, I'm Dave! I'm here to answer any questions you may have about Oscar." },
 ];
 
-const API_URL: string = "https://chatgpt-wrapper-portfolio-zr9p.vercel.app/query";
+const API_URL: string = "https://chatgpt-wrapper-portfolio-zr9p.vercel.app";
 let currentMessage: Ref = ref(messages);
 let loadingAnswer: Ref = ref(false);
 
