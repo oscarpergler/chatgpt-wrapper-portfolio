@@ -14,7 +14,8 @@ let loadingAnswer: Ref = ref(false);
 const answerMessage = async (message: String) => {
   if (!message) throw new Error("No message paramater provided for answerMessage()");
   loadingAnswer.value = true;
-  if (messages.length > 10) messages.shift(); // lazy fix, please be kind
+  if (messages.length > 10) messages.splice(0, 2);
+  console.log(messages);
   await axios.post(`${API_URL}/query`, messages) 
     .then(response => { 
       loadingAnswer.value = false;
@@ -75,7 +76,8 @@ const sendMessage = (e: Event) => {
       <input
         class="input-field"
         autofocus
-        placeholder="Write here..."
+        :placeholder="loadingAnswer ? 'Waiting for answer...' : 'Write here...'"
+        :disabled="loadingAnswer"
         @keyup.enter="sendMessage"
       >
     </div>
