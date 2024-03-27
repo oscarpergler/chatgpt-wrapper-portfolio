@@ -82,11 +82,12 @@ const sendMessage = (e: Event) => {
       >
     </div>
   </div>
+  <div class="examples-header">Try any of the examples:</div>
   <div class="examples">
-    <div class="button" @click="exampleQuestion('Tell me about his academic background.')">Academic background</div>
-    <div class="button" @click="exampleQuestion('Does he prefer frontend or backend development?')">Backend or frontend</div>
-    <div class="button" @click="exampleQuestion('Give me a list of his achievements')">Achievements</div>
-    <div class="button" @click="exampleQuestion('Tell me about his thesis project')">Thesis project</div>
+    <button class="button" :disabled="loadingAnswer" @click="exampleQuestion('Tell me about his academic background.')">Academic background</button>
+    <button class="button" :disabled="loadingAnswer" @click="exampleQuestion('Does he prefer frontend or backend development?')">Backend or frontend</button>
+    <button class="button" :disabled="loadingAnswer" @click="exampleQuestion('Give me a list of his achievements')">Achievements</button>
+    <button class="button" :disabled="loadingAnswer" @click="exampleQuestion('Tell me about his thesis project')">Thesis project</button>
   </div>
 </template>
 
@@ -131,12 +132,25 @@ const sendMessage = (e: Event) => {
     grid-row-gap: 20px;
   }
 
+  .examples-header{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .examples .button{
     text-align: center;
     color: hsla(160, 100%, 37%, 1);
+    background-color: var(--background-color);
     border: hsla(160, 100%, 37%, 1) solid 1px;
     padding: 5px;
     border-radius: 5px;
+  }
+
+  .examples .button:disabled{
+    border-color: gray;
+    color: gray;
   }
 
   .button:hover{
@@ -144,6 +158,15 @@ const sendMessage = (e: Event) => {
     background-color: hsla(160, 100%, 37%, 1);
     cursor: pointer;
     transition: 0.3s;
+  }
+
+  .input-field:disabled{
+    cursor: wait;
+  }
+
+  .button:disabled:hover{
+    background-color: var(--background-color);
+    cursor: wait;
   }
 
   .answerLoading{
@@ -186,10 +209,10 @@ const sendMessage = (e: Event) => {
     }
 
     .examples .button{
-      color: hsla(160, 100%, 37%, 1);
       border: hsla(160, 100%, 37%, 1) solid 1px;
       padding: 5px;
       border-radius: 5px;
+      font-size: 1rem;
     }
 
     .button:hover{

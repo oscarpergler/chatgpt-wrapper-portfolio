@@ -28,6 +28,7 @@ import IntroView from './views/IntroView.vue';
     padding: 5%;
     height: 100vh;
     width: 100vw;
+    border-top: 1px solid #333;
   }
 
   @media screen and (min-width: 1024px){
@@ -40,6 +41,7 @@ import IntroView from './views/IntroView.vue';
     .view{
       flex: 1; 
       height: 100%; 
+      border: none;
     }
   }
   

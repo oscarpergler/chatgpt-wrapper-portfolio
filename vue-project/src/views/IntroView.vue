@@ -42,7 +42,6 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    border-bottom: solid 1px #333;
   }
 
   .note{
