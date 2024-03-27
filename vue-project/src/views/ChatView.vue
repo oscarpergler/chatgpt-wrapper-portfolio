@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, VueElement, type Ref } from 'vue';
+import { ref, type Ref } from 'vue';
+import dontenv from 'dotenv';
 import axios from 'axios';
 import ChatMessage from '../components/ChatMessage.vue';
 
@@ -7,7 +8,7 @@ let messages = [
   { role: 'assistant', content: "Hello, I'm Dave! I'm here to answer any questions you may have about Oscar." },
 ];
 
-const API_URL: string = "http://localhost:8080";
+const API_URL: string = process.env.API_URL as string;
 let currentMessage: Ref = ref(messages);
 let loadingAnswer: Ref = ref(false);
 
