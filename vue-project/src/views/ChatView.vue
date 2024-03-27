@@ -14,6 +14,7 @@ let loadingAnswer: Ref = ref(false);
 const answerMessage = async (message: String) => {
   if (!message) throw new Error("No message paramater provided for answerMessage()");
   loadingAnswer.value = true;
+  if (messages.length > 10) messages.shift(); // lazy fix, please be kind
   await axios.post(`${API_URL}/query`, messages) 
     .then(response => { 
       loadingAnswer.value = false;
