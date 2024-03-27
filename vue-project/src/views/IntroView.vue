@@ -1,7 +1,7 @@
 <template>
   <div class="greetings">
     <div>
-      <h1 class="green">AI Portfolio</h1>
+      <h1 class="green">Hello!</h1>
       <h3>
         Welcome to my portfolio bot, ask me anything! The AI will try to answer any question it can.
       </h3>
@@ -45,23 +45,14 @@
     border-bottom: solid 1px #333;
   }
 
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-
   .note{
     color: rgb(56, 56, 56);
     font-size: 0.8rem;
   }
 
   @media screen and (min-width: 1024px) {
-    .h1{
-      font-size: 2vw;
-    }
-    .greetings h1,
-    .greetings h3 {
-      text-align: left;
+    h1{
+      font-size: 5vw;
     }
   }
 </style>
