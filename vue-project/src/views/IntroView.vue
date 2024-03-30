@@ -49,7 +49,7 @@
     font-size: 0.8rem;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1200px) and (min-height: 800px) {
     h1{
       font-size: 5vw;
     }

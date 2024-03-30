@@ -31,7 +31,7 @@ import IntroView from './views/IntroView.vue';
     border-top: 1px solid #333;
   }
 
-  @media screen and (min-width: 1024px){
+  @media screen and (min-width: 1200px) and (min-height: 800px){
     .app-container{ 
       height: 100vh;
       padding: 10%;

@@ -102,6 +102,7 @@ const sendMessage = (e: Event) => {
 
   .output{
     display: flex;
+    flex-direction: column-reverse;
     width: 100%;
     height: 100%;
     overflow-y: scroll; 
@@ -179,7 +180,7 @@ const sendMessage = (e: Event) => {
     transition: 0.3s;
   }
 
-  @media screen and (min-width: 1024px){
+  @media screen and (min-width: 1200px) and (min-height: 800px){
 
     .output{
       display: flex;
