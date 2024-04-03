@@ -105,8 +105,7 @@ const sendMessage = (e: Event) => {
     flex-direction: column-reverse;
     width: 100%;
     height: 100%;
-    overflow-y: scroll; 
-    overflow-x: wrap;
+    overflow-y: scroll;
     border-radius: 5px;
   }
 
@@ -118,9 +117,9 @@ const sendMessage = (e: Event) => {
     font-size: 1.1rem;
     padding: 10px;
     color: rgb(156, 156, 156);
-    background-color: #333;
+    background-color: var(--color-background);
+    border: 1px rgb(156, 156, 156) solid;
     border-radius: 10px;
-    border: none;
     width: 100%;
   }
 
@@ -129,7 +128,7 @@ const sendMessage = (e: Event) => {
     width: 100%;
     display: grid;
     grid-template-columns: 45% 45%;
-    grid-row: auto auto;
+    grid-row: auto;
     grid-column-gap: 10%;
     grid-row-gap: 20px;
   }
@@ -144,7 +143,7 @@ const sendMessage = (e: Event) => {
   .examples .button{
     text-align: center;
     color: hsla(160, 100%, 37%, 1);
-    background-color: var(--background-color);
+    background-color: var(--color-background);
     border: hsla(160, 100%, 37%, 1) solid 1px;
     padding: 5px;
     border-radius: 5px;
@@ -167,17 +166,8 @@ const sendMessage = (e: Event) => {
   }
 
   .button:disabled:hover{
-    background-color: var(--background-color);
+    background-color: var(--color-background);
     cursor: wait;
-  }
-
-  .answerLoading{
-    padding-left: 10px;
-    margin: 10px;
-    font-weight: bold;
-    width: 100%;
-    color: hsla(160, 100%, 37%, 1);
-    transition: 0.3s;
   }
 
   @media screen and (min-width: 1200px) and (min-height: 800px){
@@ -187,8 +177,7 @@ const sendMessage = (e: Event) => {
       flex-direction: column-reverse;
       width: 50vw;
       height: 100%;
-      overflow-y: scroll; 
-      overflow-x: wrap;
+      overflow-y: scroll;
       border: 1px solid #333;
       border-radius: 5px;
     }
@@ -205,7 +194,6 @@ const sendMessage = (e: Event) => {
       padding: 10px;
       border-radius: 10px;
       color: rgb(156, 156, 156);
-      background-color: #333;
       border: none;
       width: 100%;
     }
